@@ -40,6 +40,7 @@ form.addEventListener('submit', event => {
 
     fetch('https://api.frienzy.app/me', {
         method: 'POST',
+        credentials: 'include',
         body: JSON.stringify({username, password})
     })
         .then(response => response.ok && response.json())
@@ -64,4 +65,5 @@ form.addEventListener('change', event => {
 })
 
 document.body.replaceChildren(element)
+
 
