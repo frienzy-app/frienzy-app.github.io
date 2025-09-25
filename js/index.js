@@ -99,23 +99,6 @@ const routes = {
                 'repeat-password': {value: repeatPassword}
             } = event.target.elements
 
-            submit.disabled = true
-            submit.value = 'Loading...'
-
-            fetch('/me', {
-                method: 'PATCH',
-                body: JSON.stringify({username, password})
-            })
-                .then(response => response.ok && response.json())
-                .then(data => {
-                    if (!data) {
-                        submit.disabled = false
-                        submit.removeAttribute('value')
-                        submit.setCustomValidity('Failed to log in')
-                        submit.reportValidity()
-                        return
-                    }
-                }) 
         })
 
         form.addEventListener('change', event => {
