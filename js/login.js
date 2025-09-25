@@ -38,7 +38,7 @@ form.addEventListener('submit', event => {
     submit.disabled = true
     submit.value = 'Loading...'
 
-    fetch('http://localhost:3000/me', {
+    fetch('https://api.frienzy.ap/me', {
         method: 'POST',
         body: JSON.stringify({username, password})
     })
