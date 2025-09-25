@@ -1,19 +1,5 @@
 <title>Frienzy</title>
 <link rel=icon href=/favicon.ico>
-<script>
-    fetch('https://api.frienzy.app/me')
-        .then(response => response.ok && response.json())
-        .then(session => {
-            if (session) {
-                sessionStorage.setItem('id', session.id)
-                sessionStorage.setItem('username', session.username)
-            }
-            return import(`/js/${session ? 'index' : 'login'}.js`)
-        })
-        .catch(error => {
-            console.log(error)
-        })
-</script>
 <style>
     html {
         --color-a: white;
@@ -75,6 +61,19 @@
         }
     }
 </style>
+<script>
+    fetch('https://api.frienzy.app/me', {
+        credentials: 'include'
+    })
+    .then(response => response.ok && response.json())
+    .then(session => {
+        if (session) {
+            sessionStorage.setItem('id', session.id)
+            sessionStorage.setItem('username', session.username)
+        }
+        return import(`/js/${session ? 'index' : 'login'}.js`)
+    })
+</script>
 
 <div>
     <svg viewBox='0 0 325 325'>
@@ -82,7 +81,7 @@
     </svg>
 </div>
 <style>
-    div {
+    body > div {
         height: 100%;
         display: flex;
         justify-content: center;
@@ -91,4 +90,3 @@
         }
     }
 </style>
-
