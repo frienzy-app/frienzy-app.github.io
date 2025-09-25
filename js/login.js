@@ -38,7 +38,7 @@ form.addEventListener('submit', event => {
     submit.disabled = true
     submit.value = 'Loading...'
 
-    fetch('https://api.frienzy.ap/me', {
+    fetch('https://api.frienzy.app/me', {
         method: 'POST',
         body: JSON.stringify({username, password})
     })
@@ -64,3 +64,4 @@ form.addEventListener('change', event => {
 })
 
 document.body.replaceChildren(element)
+
